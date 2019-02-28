@@ -1,5 +1,7 @@
 // https://github.com/JamieHall1962/auth-ii/pull/1
 
+require('dotenv').config();
+
 const express = require("express");
 const cors = require("cors");
 

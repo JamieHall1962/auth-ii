@@ -11,7 +11,7 @@ const knexConfig = require("../knexfile.js");
 
 const db = knex(knexConfig.development);
 
-const secret = "never play f3";
+const secret = process.env.JWT_SECRET || "never play f3";
 
 // Generate a token
 
@@ -35,10 +35,11 @@ function restricted(req, res, next) {
   if (token) {
     jwt.verify(token, secret, (err, decodedToken) => {
       if (err) {
+          console.log(token,secret);
         res
           .status(403)
           .json({
-            message: "Are you a f****** hacker? Get the **** out of here!!"
+            message: "Are you a ******* hacker? Get the **** out of here!!"
           });
       } else {
         next();
